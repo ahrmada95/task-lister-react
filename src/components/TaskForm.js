@@ -1,10 +1,13 @@
-const TaskForm = () => {
+import React, {useState} from 'react';
+
+const TaskForm = ({handleSubmit}) => {
+    const [text, setText] = useState('');
     return (
         <div>
             {/*THIS IS A FORM*/}
-            <form>
+            <form onSubmit={(event) => { event.preventDefault(); handleSubmit(text)}}>
                 <label>Task Descripton:</label>
-                <input type="text" placeholder="Description"/>
+                <input type="text" placeholder="Description" onChange={(event) => { setText(event.target.value) }}/>
                 <input type="submit" value="Create New Task"/>
             </form> 
         </div>
